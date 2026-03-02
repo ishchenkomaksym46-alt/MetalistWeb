@@ -1,0 +1,632 @@
+:root {
+  --bg: #041025;
+  --bg-deep: #020813;
+  --blue: #0c2f66;
+  --blue-soft: #183e7d;
+  --yellow: #f2c340;
+  --gold: #e9ba45;
+  --text: #f4f7ff;
+  --muted: #b8c6e5;
+  --card: rgba(10, 26, 50, 0.72);
+  --line: rgba(242, 195, 64, 0.38);
+  --maxw: 1160px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 80% 10%, rgba(242, 195, 64, 0.12), transparent 50%),
+    radial-gradient(circle at 10% 20%, rgba(49, 106, 200, 0.3), transparent 45%),
+    linear-gradient(170deg, var(--bg) 0%, var(--bg-deep) 55%, #03070f 100%);
+  line-height: 1.5;
+}
+
+.site {
+  overflow-x: hidden;
+}
+
+.container {
+  width: min(100% - 2rem, var(--maxw));
+  margin: 0 auto;
+}
+
+.section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.kicker {
+  margin: 0 0 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.02em;
+}
+
+p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.section-head {
+  margin-bottom: 2rem;
+}
+
+.section-head h2 {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  line-height: 0.95;
+  max-width: 18ch;
+}
+
+.hero {
+  min-height: 100vh;
+  display: grid;
+  align-items: center;
+  background-image:
+    linear-gradient(to bottom, rgba(2, 8, 20, 0.18), rgba(2, 8, 20, 0.9)),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Kharkiv%20Metalist%20Stadium%208.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(242, 195, 64, 0.14), transparent 35%),
+    linear-gradient(to top, rgba(2, 10, 26, 0.88), rgba(2, 10, 26, 0.2));
+}
+
+.hero-lights {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(255, 232, 173, 0.2), transparent 22%),
+    radial-gradient(circle at 80% 25%, rgba(255, 232, 173, 0.2), transparent 22%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+}
+
+.hero h1 {
+  font-size: clamp(3.3rem, 10vw, 8rem);
+  line-height: 0.9;
+  text-wrap: balance;
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+.subtitle {
+  margin-top: 1.2rem;
+  max-width: 48ch;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+.cta {
+  margin-top: 2rem;
+  border: 1px solid rgba(242, 195, 64, 0.7);
+  background: linear-gradient(120deg, #d8a532, #f2c340);
+  color: #1a1203;
+  padding: 0.9rem 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(242, 195, 64, 0.35);
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  padding-left: 1.5rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(242, 195, 64, 0.12), var(--line), rgba(242, 195, 64, 0.12));
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.timeline-year {
+  font-family: "Bebas Neue", sans-serif;
+  color: var(--yellow);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.timeline-card {
+  border: 1px solid rgba(242, 195, 64, 0.2);
+  background: var(--card);
+  backdrop-filter: blur(6px);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+}
+
+.timeline-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.timeline-card div {
+  padding: 1.2rem;
+}
+
+.timeline-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0.45rem;
+}
+
+.city {
+  background:
+    linear-gradient(135deg, rgba(8, 27, 58, 0.74), rgba(4, 16, 37, 0.74)),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/FC%20Metalist%20Kharkiv%20-%20Malm%C3%B6%20FF%20%286525390231%29.jpg")
+      center / cover;
+}
+
+.city-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.city h2 {
+  font-size: clamp(2.4rem, 4vw, 4rem);
+  margin-bottom: 0.9rem;
+}
+
+blockquote {
+  margin: 1.5rem 0 0;
+  font-size: 1.35rem;
+  font-family: "Bebas Neue", sans-serif;
+  color: #ffe08a;
+  line-height: 1.2;
+}
+
+.city-images {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.city-images img {
+  width: 100%;
+  border-radius: 0.7rem;
+  min-height: 260px;
+  object-fit: cover;
+  border: 1px solid rgba(242, 195, 64, 0.3);
+}
+
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.legend-card {
+  position: relative;
+  min-height: 410px;
+  border: 1px solid rgba(242, 195, 64, 0.25);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  background: #0b1f3f;
+}
+
+.legend-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85);
+}
+
+.legend-base,
+.legend-hover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+}
+
+.legend-base {
+  bottom: 0;
+  background: linear-gradient(180deg, transparent, rgba(2, 8, 20, 0.96));
+}
+
+.legend-position {
+  color: var(--yellow);
+  font-size: 0.72rem;
+  margin-bottom: 0.2rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.legend-base h3 {
+  font-size: 1.8rem;
+}
+
+.legend-hover {
+  inset: 0;
+  background: linear-gradient(180deg, rgba(233, 186, 69, 0.08), rgba(2, 8, 20, 0.92));
+  display: grid;
+  place-items: end start;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.legend-card:hover .legend-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.achievements {
+  background: linear-gradient(180deg, rgba(12, 47, 102, 0.2), rgba(12, 47, 102, 0.02));
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  border: 1px solid rgba(242, 195, 64, 0.24);
+  background: rgba(4, 16, 37, 0.75);
+  text-align: center;
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+}
+
+.stat-icon {
+  font-size: 1.55rem;
+}
+
+.stat-card h3 {
+  margin-top: 0.4rem;
+  color: #ffe08a;
+  font-size: clamp(2rem, 4.8vw, 3rem);
+}
+
+.anniversary-wrap {
+  border: 1px solid rgba(242, 195, 64, 0.4);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1.6rem;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(242, 195, 64, 0.12), transparent 60%),
+    linear-gradient(140deg, rgba(6, 21, 45, 0.86), rgba(2, 8, 20, 0.92));
+  position: relative;
+  overflow: hidden;
+}
+
+.anniversary-emblem {
+  width: 160px;
+  height: 160px;
+  border: 2px solid rgba(242, 195, 64, 0.62);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #ffda79;
+  box-shadow: 0 0 40px rgba(242, 195, 64, 0.25);
+  background: radial-gradient(circle, rgba(242, 195, 64, 0.18), transparent 70%);
+}
+
+.anniversary-emblem span {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.anniversary-emblem small {
+  display: block;
+  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  color: #ffe8b5;
+}
+
+.anniversary h2 {
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  margin-bottom: 0.7rem;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particles span {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 219, 117, 0.68);
+  animation: float 6.5s linear infinite;
+}
+
+.particles span:nth-child(3n) {
+  background: rgba(255, 242, 201, 0.7);
+}
+
+.particles span:nth-child(4n) {
+  width: 3px;
+  height: 3px;
+}
+
+.particles span:nth-child(1) {
+  left: 10%;
+  top: 88%;
+  animation-delay: 0.2s;
+}
+.particles span:nth-child(2) {
+  left: 17%;
+  top: 95%;
+  animation-delay: 1.1s;
+}
+.particles span:nth-child(3) {
+  left: 23%;
+  top: 88%;
+  animation-delay: 2s;
+}
+.particles span:nth-child(4) {
+  left: 34%;
+  top: 90%;
+  animation-delay: 0.7s;
+}
+.particles span:nth-child(5) {
+  left: 39%;
+  top: 95%;
+  animation-delay: 1.8s;
+}
+.particles span:nth-child(6) {
+  left: 45%;
+  top: 86%;
+  animation-delay: 3.2s;
+}
+.particles span:nth-child(7) {
+  left: 53%;
+  top: 90%;
+  animation-delay: 0.9s;
+}
+.particles span:nth-child(8) {
+  left: 61%;
+  top: 93%;
+  animation-delay: 2.3s;
+}
+.particles span:nth-child(9) {
+  left: 67%;
+  top: 89%;
+  animation-delay: 1.4s;
+}
+.particles span:nth-child(10) {
+  left: 72%;
+  top: 92%;
+  animation-delay: 3.6s;
+}
+.particles span:nth-child(11) {
+  left: 78%;
+  top: 96%;
+  animation-delay: 2.6s;
+}
+.particles span:nth-child(12) {
+  left: 85%;
+  top: 90%;
+  animation-delay: 4.4s;
+}
+.particles span:nth-child(13) {
+  left: 89%;
+  top: 97%;
+  animation-delay: 1.9s;
+}
+.particles span:nth-child(14) {
+  left: 91%;
+  top: 89%;
+  animation-delay: 0.5s;
+}
+.particles span:nth-child(15) {
+  left: 13%;
+  top: 92%;
+  animation-delay: 5s;
+}
+.particles span:nth-child(16) {
+  left: 28%;
+  top: 96%;
+  animation-delay: 2.8s;
+}
+.particles span:nth-child(17) {
+  left: 64%;
+  top: 95%;
+  animation-delay: 1.2s;
+}
+.particles span:nth-child(18) {
+  left: 82%;
+  top: 92%;
+  animation-delay: 3.1s;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(242, 195, 64, 0.25);
+  min-height: 220px;
+}
+
+.gallery-grid img:nth-child(1),
+.gallery-grid img:nth-child(6) {
+  grid-column: span 6;
+}
+
+.gallery-grid img:nth-child(2),
+.gallery-grid img:nth-child(3),
+.gallery-grid img:nth-child(4),
+.gallery-grid img:nth-child(5) {
+  grid-column: span 3;
+}
+
+.footer {
+  border-top: 1px solid rgba(242, 195, 64, 0.22);
+  padding: 1.4rem 0;
+  background: rgba(2, 8, 20, 0.8);
+}
+
+.footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.socials {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.socials a {
+  border: 1px solid rgba(242, 195, 64, 0.4);
+  color: #f7e4a2;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.6rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.62;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-180px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .legend-grid,
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .city-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 4rem 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 16vw, 4.2rem);
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+  }
+
+  .anniversary-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .legend-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid img {
+    grid-column: auto !important;
+    min-height: 240px;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import HeroSection from "./components/HeroSection";
+import HistorySection from "./components/HistorySection";
+import ClubCitySection from "./components/ClubCitySection";
+import LegendsSection from "./components/LegendsSection";
+import AchievementsSection from "./components/AchievementsSection";
+import AnniversarySection from "./components/AnniversarySection";
+import GallerySection from "./components/GallerySection";
+import SiteFooter from "./components/SiteFooter";
+import useRevealAnimations from "./components/useRevealAnimations";
 
-function App() {
+export default function App() {
+  useRevealAnimations();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="site">
+      <HeroSection />
+      <HistorySection />
+      <ClubCitySection />
+      <LegendsSection />
+      <AchievementsSection />
+      <AnniversarySection />
+      <GallerySection />
+      <SiteFooter />
+    </main>
   );
 }
-
-export default App;
