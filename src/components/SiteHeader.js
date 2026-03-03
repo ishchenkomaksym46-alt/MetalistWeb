@@ -23,7 +23,7 @@ export default function SiteHeader() {
               {content.nav.home}
             </NavLink>
             <NavLink
-              to="/istoriia-metalista"
+              to="/history_of_metalist"
               className={({ isActive }) => (isActive ? "nav-link is-active" : "nav-link")}
             >
               {content.nav.fullHistory}
