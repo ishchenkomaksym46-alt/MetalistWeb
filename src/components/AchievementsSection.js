@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
-import { achievementStats } from "./data";
+import { useEffect, useMemo, useState } from "react";
+import { useLanguage } from "./LanguageContext";
+import { getContent } from "./data";
 
-function useCounterAnimation() {
-  const [counts, setCounts] = useState(achievementStats.map(() => 0));
+function useCounterAnimation(targetValues, language) {
+  const [counts, setCounts] = useState(targetValues.map(() => 0));
 
   useEffect(() => {
+    setCounts(targetValues.map(() => 0));
+
     const section = document.querySelector("#achievements");
     if (!section) return undefined;
 
@@ -19,9 +22,7 @@ function useCounterAnimation() {
         const progress = Math.min((now - start) / duration, 1);
         const eased = 1 - Math.pow(1 - progress, 3);
 
-        const next = achievementStats.map((item) =>
-          Math.floor(item.value * eased)
-        );
+        const next = targetValues.map((value) => Math.floor(value * eased));
         setCounts(next);
 
         if (progress < 1) {
@@ -50,23 +51,27 @@ function useCounterAnimation() {
       cancelAnimationFrame(rafId);
       observer.disconnect();
     };
-  }, []);
+  }, [language, targetValues]);
 
   return counts;
 }
 
 export default function AchievementsSection() {
-  const counts = useCounterAnimation();
+  const { language } = useLanguage();
+  const content = getContent(language);
+  const stats = content.achievements.stats;
+  const targetValues = useMemo(() => stats.map((item) => item.value), [stats]);
+  const counts = useCounterAnimation(targetValues, language);
 
   return (
     <section id="achievements" className="section achievements reveal">
       <div className="container">
         <header className="section-head">
-          <p className="kicker">Досягнення</p>
-          <h2>Факти, що увійшли в історію клубу</h2>
+          <p className="kicker">{content.achievements.kicker}</p>
+          <h2>{content.achievements.title}</h2>
         </header>
         <div className="stats-grid">
-          {achievementStats.map((item, index) => (
+          {stats.map((item, index) => (
             <article className="stat-card" key={item.label}>
               <span className="stat-icon" aria-hidden="true">
                 {item.icon}

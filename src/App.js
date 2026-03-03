@@ -1,26 +1,17 @@
-import HeroSection from "./components/HeroSection";
-import HistorySection from "./components/HistorySection";
-import ClubCitySection from "./components/ClubCitySection";
-import LegendsSection from "./components/LegendsSection";
-import AchievementsSection from "./components/AchievementsSection";
-import AnniversarySection from "./components/AnniversarySection";
-import GallerySection from "./components/GallerySection";
-import SiteFooter from "./components/SiteFooter";
-import useRevealAnimations from "./components/useRevealAnimations";
+import { Navigate, Route, Routes } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import MetalistFullHistoryPage from "./components/MetalistFullHistoryPage";
+import SiteHeader from "./components/SiteHeader";
 
 export default function App() {
-  useRevealAnimations();
-
   return (
-    <main className="site">
-      <HeroSection />
-      <HistorySection />
-      <ClubCitySection />
-      <LegendsSection />
-      <AchievementsSection />
-      <AnniversarySection />
-      <GallerySection />
-      <SiteFooter />
-    </main>
+    <div className="site">
+      <SiteHeader />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/history_of_metalist" element={<MetalistFullHistoryPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </div>
   );
 }

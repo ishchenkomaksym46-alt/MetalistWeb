@@ -1,4 +1,10 @@
+import { useLanguage } from "./LanguageContext";
+import { getContent } from "./data";
+
 export default function HeroSection() {
+  const { language } = useLanguage();
+  const content = getContent(language);
+
   const handleDiscoverClick = () => {
     const target = document.getElementById("history");
     if (target) {
@@ -11,14 +17,11 @@ export default function HeroSection() {
       <div className="hero-overlay" />
       <div className="hero-lights" />
       <div className="container hero-content reveal">
-        <p className="kicker">Харків. 1926-2026.</p>
-        <h1>Металіст Спортивна Душа Міста</h1>
-        <p className="subtitle">
-          100 років стадіону «Металіст» у Харкові. 100 років футболу, пам'яті й
-          міської єдності.
-        </p>
+        <p className="kicker">{content.hero.kicker}</p>
+        <h1>{content.hero.title}</h1>
+        <p className="subtitle">{content.hero.subtitle}</p>
         <button type="button" className="cta" onClick={handleDiscoverClick}>
-          Відкрити Спадщину
+          {content.hero.cta}
         </button>
       </div>
     </section>

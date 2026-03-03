@@ -1,8 +1,14 @@
+import { useLanguage } from "./LanguageContext";
+import { getContent } from "./data";
+
 export default function SiteFooter() {
+  const { language } = useLanguage();
+  const content = getContent(language);
+
   return (
     <footer className="footer">
       <div className="container footer-row">
-        <p>Стадіон «Металіст», Харків 1926-2026</p>
+        <p>{content.footer.text}</p>
         <div className="socials" aria-label="social links">
           <a href="#anniversary" aria-label="Instagram">
             IG
@@ -13,7 +19,7 @@ export default function SiteFooter() {
           <a href="#anniversary" aria-label="Facebook">
             FB
           </a>
-          <h4>Maked by Maxym Ishchenko</h4>
+          <h4>{content.footer.madeBy}</h4>
         </div>
       </div>
     </footer>
