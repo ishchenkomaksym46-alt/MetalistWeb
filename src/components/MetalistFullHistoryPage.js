@@ -1,5 +1,5 @@
 import { useLanguage } from "./LanguageContext";
-import { getContent, sourcesList } from "./data";
+import { getContent } from "./data";
 
 export default function MetalistFullHistoryPage() {
   const { language } = useLanguage();
@@ -37,18 +37,6 @@ export default function MetalistFullHistoryPage() {
             <h3>{content.fullHistory.summaryTitle}</h3>
             <p>{content.fullHistory.summaryText}</p>
           </article>
-
-          <section className="sources reveal is-visible" aria-labelledby="sources-title">
-            <h2 id="sources-title">{content.fullHistory.sourcesTitle}</h2>
-            {sourcesList.map((source, index) => (
-              <p key={source.href}>
-                {index + 1}.{" "}
-                <a href={source.href} target="_blank" rel="noreferrer">
-                  {source.label}
-                </a>
-              </p>
-            ))}
-          </section>
         </div>
       </section>
     </main>

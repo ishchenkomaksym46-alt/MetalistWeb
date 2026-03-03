@@ -377,21 +377,6 @@ export const contentByLang = {
 export const galleryImages = commonGalleryImages;
 export const lottieSources = lottieAnimations;
 
-export const sourcesList = [
-  {
-    href: "https://uk.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%B0%D0%BB%D1%96%D1%81%D1%82_(%D0%A5%D0%B0%D1%80%D0%BA%D1%96%D0%B2)",
-    label: "Wikipedia (UA): Metalist Kharkiv",
-  },
-  {
-    href: "https://en.wikipedia.org/wiki/FC_Metalist_Kharkiv",
-    label: "Wikipedia (EN): FC Metalist Kharkiv",
-  },
-  {
-    href: "https://metalist.ua/",
-    label: "Official website: metalist.ua",
-  },
-];
-
 export function getContent(language) {
   const locale = language === "en" ? "en" : "ua";
   const content = contentByLang[locale];
